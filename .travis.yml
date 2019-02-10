@@ -16,7 +16,7 @@ after_success:
   - docker build -t maksim1990/multi-worker ./worker
 
   # Login to Docker CLI
-  - echo "korncoms050419909111" | docker login -u "maksim1990" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Push images to Docker Hub
   - docker push maksim1990/multi-client
