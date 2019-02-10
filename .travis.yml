@@ -3,11 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t maksim1990/reactjs-test -f ./client/Dockerfile.dev ./client
+  - docker build -t docker_travis_test -f ./client/Dockerfile.dev ./client
 
 scripts:
-  - gem install rake
-  - docker run maksim1990/reactjs-test npm run test -- --coverage
+  - docker run docker_travis_test npm test -- --coverage
 
 after_success:
   - docker build -t maksim1990/multi-client ./client
