@@ -6,7 +6,7 @@ services:
 before_install:
   - docker build -t docker_travis_test -f ./client/Dockerfile.dev ./client
 
-scripts:
+script:
   - docker run docker_travis_test npm test -- --coverage
 
 after_success:
