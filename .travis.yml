@@ -6,7 +6,7 @@ before_install:
   - docker build -t maksim1990/reactjs-test -f ./client/Dockerfile.dev ./client
 
 scripts:
-  - docker run maksim1990/reactjs-test npm test -- --coverage
+  - docker run maksim1990/reactjs-test npm run test -- --coverage
 
 after_success:
   - docker build -t maksim1990/multi-client ./client
