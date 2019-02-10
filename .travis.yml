@@ -6,6 +6,7 @@ before_install:
   - docker build -t maksim1990/reactjs-test -f ./client/Dockerfile.dev ./client
 
 scripts:
+  - gem install rake
   - docker run maksim1990/reactjs-test npm run test -- --coverage
 
 after_success:
@@ -13,8 +14,10 @@ after_success:
   - docker build -t maksim1990/multi-server ./server
   - docker build -t maksim1990/multi-nginx ./nginx
   - docker build -t maksim1990/multi-worker ./worker
+
   # Login to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+
   # Push images to Docker Hub
   - docker push maksim1990/multi-client
   - docker push maksim1990/multi-server
